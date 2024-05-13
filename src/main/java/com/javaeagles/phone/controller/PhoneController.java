@@ -15,7 +15,7 @@ public class PhoneController {
         // 현재 html의 화면을 암시하고 만든 것이다.
         // view는 사용자에게 데이터를 입력받고 서버에 전달하며, 결과를 사용자에게 보여주기 위한 용도로 사용된다.
 
-        System.out.println(" 정보 전체 조회 ");
+        System.out.println("전화번호부 전체 조회 ");
 
         try {
             ArrayList ph = phoneService.phoneViewAll();
@@ -88,18 +88,17 @@ public class PhoneController {
         }
     }
 
-        public static void phoneDelete() {
-            Scanner sc = new Scanner(System.in);
-            System.out.print("삭제할 연락처의 이름을 입력하세요 : ");
-            String name = sc.nextLine();
-            PhoneDTO ph = null;
+    public static void phoneDelete() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("삭제할 연락처의 이름을 입력하세요 : ");
+        String name = sc.nextLine();
 
-            try {
-                ph = phoneService.phoneDelete(name);
-                System.out.println("삭제가 완료되었습니다.");
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+        try {
+            phoneService.phoneDelete(name);
+            System.out.println("삭제가 완료되었습니다.");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
+}
 

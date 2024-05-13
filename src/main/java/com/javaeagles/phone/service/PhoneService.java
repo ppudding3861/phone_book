@@ -79,18 +79,18 @@ public class PhoneService {
         PhoneDTO modifyPh = phoneRepository.phoneFindById(index);
         return modifyPh;
     }
-    public PhoneDTO phoneDelete (String index) throws Exception {
-        PhoneDTO findPH = phoneRepository.phoneFindById(index);
+    public PhoneDTO phoneDelete (String name) throws Exception {
+        PhoneDTO findPH = phoneRepository.phoneFindById(name);
         if(findPH != null) {
-            throw new Exception("전화번호가 존재하지 않습니다.");
+            throw new Exception("삭제할 전화번호가 존재하지 않습니다.");
         }
 
-        int result = phoneRepository.phoneDelete(index);
+        int result = phoneRepository.phoneDelete(name);
         if(result < 0 ) {
             throw new Exception("전화번호 삭제 실패");
         }
 
-        PhoneDTO deletePh = phoneRepository.phoneFindById(index);
+        PhoneDTO deletePh = phoneRepository.phoneFindById(name);
         return deletePh;
     }
 }

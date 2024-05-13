@@ -189,14 +189,14 @@ public class PhoneRepository {
         return result;
 
     }
-    public int phoneDelete(String index){
+    public int phoneDelete(String name){
         String query = pros.getProperty("phoneDelete");
         con = getConnection();
         int result = 0;
 
         try {
             pstmt = con.prepareStatement(query);
-            pstmt.setString(1, index);
+            pstmt.setString(1, name);
             result = pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);

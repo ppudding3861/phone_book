@@ -53,42 +53,48 @@
     <entry key="phoneInsert">
 
 
-                INSERT INTO user_info
-                (
-                    USER_NAME,
-                    USER_EMAIL,
-                    USER_MEMO,
-                    USER_GROUP
-                )
+        INSERT INTO user_info
+        (
+        USER_NAME,
+        USER_EMAIL,
+        USER_MEMO,
+        USER_GROUP
+        )
 
-                VALUES
-                (
-                    ?,
-                    ?,
-                    ?,
-                    ?
-                )
+        VALUES
+        (
+        ?,
+        ?,
+        ?,
+        ?
+        )
     </entry>
     <entry key="phoneInsert2">
-                INSERT INTO phone_info
-                (
-                    USER_CODE,
-                    PHONE,
-                    PHONE_NAME
-                )
+        INSERT INTO phone_info
+        (
+        USER_CODE,
+        PHONE,
+        PHONE_NAME
+        )
 
-                VALUES
-                (
-                    LAST_INSERT_ID(),
-                    ?,
-                    ?
-                )
+        VALUES
+        (
+        LAST_INSERT_ID(),
+        ?,
+        ?
+        )
     </entry>
 
     <entry key="phoneModify">
         UPDATE USER_INFO
         SET USER_NAME = ?
         WHERE USER_CODE = ?
+    </entry>
+
+    <entry key="phoneDelete">
+        DELETE
+        FROM PHONE_INFO
+        WHERE USER_CODE IN (SELECT USER_CODE FROM USER_INFO WHERE USER_NAME = ?)
     </entry>
 
 </properties>
